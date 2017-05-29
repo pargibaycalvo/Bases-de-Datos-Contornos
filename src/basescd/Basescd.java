@@ -19,6 +19,8 @@ public class Basescd {
         
         conecta obc = new conecta();
         obc.Conexion();
+        obc.cargaArray();
+        obc.insertarJugadores();
     }
     
 }
