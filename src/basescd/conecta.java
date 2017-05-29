@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -118,5 +120,16 @@ public class conecta {
         }
        
     }
+    
+    public void cerrarBasePersonas(){
+        
+        try {
+                conexion.close();
+                System.out.println("Seguridad: Base de datos cerrada con éxito.");
+            } catch (SQLException ex) {
+                Logger.getLogger(Basescd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
      
 }

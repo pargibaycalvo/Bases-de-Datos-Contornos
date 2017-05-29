@@ -24,6 +24,7 @@ public class Basescd {
         obc.visualizarPersonas();
         obc.borrarPersonas();
         obc.actualizarPersonas();
+        obc.cerrarBasePersonas();
     }
     
 }
