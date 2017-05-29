@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,7 +83,7 @@ public class conecta {
         } catch (SQLException ex) {
             System.out.println("Error al insertar los datos en la tabla:"+ex.getMessage());
         }
-        
+
     }
     /**
      * Visualiza los datos de la tabla.
@@ -94,11 +95,23 @@ public class conecta {
            result = ver.executeQuery();
            while(result.next()){
                System.out.println("Nombre  "+":"+ result.getString("Nombre"));
-               System.out.println("DNI"+" :"+result.getString("DNI"));   
+               System.out.println("DNI"+" :"+result.getString("DNI"));
+               System.out.println();
            }
         } catch (SQLException ex) {
             System.out.println("Error al leer la Base de Datos: "+ex.getMessage());
         }
+        try {
+            Statement s = conexion.createStatement();
+            ResultSet r = s.executeQuery("select count (*) as rowcount from jugadores");
+            r.next();
+            int count = r.getInt("rowcount") ;
+            r.close() ;
+            System.out.println("Total de filas en la tabla: " + count );
+        } catch (SQLException ex) {
+            Logger.getLogger(conecta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
     }
     /**
@@ -151,6 +164,22 @@ public class conecta {
         }
     
        }
+    
+    /*public void contarFilas(){
+        
+        try {
+            Statement s = conexion.createStatement();
+            ResultSet r = s.executeQuery("SELECT COUNT (*) AS rowcount FROM jugadores");
+            r.next();
+            int count = r.getInt("rowcount") ;
+            r.close() ;
+            System.out.println("MyTable has " + count + " row(s).");
+        } catch (SQLException ex) {
+            Logger.getLogger(conecta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
+    
+          
     /**
      * Cierra la base con seguridad para evitar daños en nuestros datos de la tabla.
      */
