@@ -10,7 +10,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -81,7 +80,7 @@ public class conecta {
     public void visualizarPersonas(){
         
         try {
-            PreparedStatement ver = conexion.prepareStatement("Select * from Jugadores");
+           PreparedStatement ver = conexion.prepareStatement("Select * from Jugadores");
            result = ver.executeQuery();
            while(result.next()){
                System.out.println("Nombre  "+":"+ result.getString("Nombre"));
@@ -97,7 +96,8 @@ public class conecta {
     public void borrarPersonas(Integer reg){
         
         try{ 
-            PreparedStatement ver = conexion.prepareStatement("delete from Jugadores where dni="+reg.toString()); 
+            PreparedStatement borra = conexion.prepareStatement("delete from Jugadores where dni="+reg.toString());
+            borra.execute();
             System.out.println("Fila borrada con éxito"); 
         }catch(SQLException ex){ 
             System.out.println("Error al borrar la fila, compruebe que ha introducido bien el DNI: "+ex.getMessage()); 
