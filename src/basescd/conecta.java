@@ -104,5 +104,19 @@ public class conecta {
         }
         
     }
+    
+    public void actualizarPersonas(){ 
+        Integer reg=Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para actualizar la fila correspondiente:")); 
+        String nom=JOptionPane.showInputDialog("Inserte el nombre a actualizar:"); 
+        String dni=JOptionPane.showInputDialog("Inserte el DNI a actualizar:"); 
+       try{ 
+            PreparedStatement actualiza = conexion.prepareStatement("update jugadores set nombre='"+nom+"',dni='"+dni+"'where dni="+reg.toString());
+                actualiza.execute();
+                System.out.println("Registro actualizado"); 
+        }catch(SQLException ex){ 
+            System.out.println("Error al actualizar el registro, verifique que ha introducido bien los datos a actualizar: "+ex.getMessage());
+        }
+       
+    }
      
 }

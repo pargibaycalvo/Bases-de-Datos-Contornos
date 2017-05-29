@@ -23,6 +23,7 @@ public class Basescd {
         obc.insertarPersonas();
         obc.visualizarPersonas();
         obc.borrarPersonas();
+        obc.actualizarPersonas();
     }
     
 }
