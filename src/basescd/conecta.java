@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 public class conecta {
 
     public static Connection conexion;
+    ResultSet result;
    
     ArrayList<parametros>personas = new ArrayList<>();
     
@@ -71,6 +72,22 @@ public class conecta {
             }
         } catch (SQLException ex) {
             System.out.println("Error al insertar los datos en la tabla:"+ex.getMessage());
+        }
+        
+    }
+    
+    public void visualizarPersonas(){
+        
+        try {
+            PreparedStatement ver = conexion.prepareStatement("Select * from Jugadores");
+           result = ver.executeQuery();
+           while(result.next()){
+               System.out.println("Nombre  "+":"+ result.getString("Nombre"));
+               System.out.println("dni"+" :"+result.getString("DNI"));
+               System.out.println();
+           }
+        } catch (SQLException ex) {
+            System.out.println("Error al leer  la Base de Datos: "+ex.getMessage());
         }
         
     }
