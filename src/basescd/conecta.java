@@ -45,6 +45,14 @@ public class conecta {
         }
     }
     
+    public void cargaArray(){
+        
+            personas.add(new parametros(
+            JOptionPane.showInputDialog("Inserta el Nombre"),
+            JOptionPane.showInputDialog("Inserta el DNI")));
+            
+    }
+    
     
     
 }
