@@ -97,8 +97,7 @@ public class conecta {
     public void borrarPersonas(Integer reg){
         
         try{ 
-            Statement st = conexion.createStatement(); 
-            st.execute("delete from Jugadores where dni="+reg.toString()); 
+            PreparedStatement ver = conexion.prepareStatement("delete from Jugadores where dni="+reg.toString()); 
             System.out.println("Fila borrada con éxito"); 
         }catch(SQLException ex){ 
             System.out.println("Error al borrar la fila, compruebe que ha introducido bien el DNI: "+ex.getMessage()); 
