@@ -86,7 +86,7 @@ public class conecta {
 
     }
     /**
-     * Visualiza los datos de la tabla.
+     * Visualiza los datos de la tabla y visualiza el total de filas que tienes en la tabla.
      */
     public void visualizarPersonas(){
         
@@ -117,6 +117,7 @@ public class conecta {
     /**
      * Borrar los datos de la tabla mediante el DNI.
      * Al introducir el DNI se borra esa linea.
+     * Visualiza cuantas lineas se han borrado al ejecutarlo.
      * @param reg 
      */
     public void borrarPersonas(Integer reg){
@@ -133,6 +134,7 @@ public class conecta {
     }
     /**
      * Actualiza los datos de la fila que queramos mediante el DNI.
+     * Visualiza cuantas lineas se han actualizado.
      * @param reg
      * @param nom
      * @param dni 
@@ -153,7 +155,12 @@ public class conecta {
      * Elimina todas las filas de la tabla, dejando así la tabla en blanco.
      */
     public void formatearTabla(){
-    
+        Object [] opciones ={"Aceptar","Cancelar"};
+        int eleccion = JOptionPane.showOptionDialog(null,"Esta seguro de que desea formatear la tabla?","Mensaje de Confirmacion",
+        JOptionPane.YES_NO_OPTION,
+        JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
+        if (eleccion == JOptionPane.YES_OPTION){
+
         try {
         PreparedStatement borracom = conexion.prepareStatement("delete from jugadores");
         borracom.execute();
@@ -162,26 +169,14 @@ public class conecta {
         } catch(SQLException ex){ 
             System.out.println("Error al formatear la tabla: "+ex.getMessage());
         }
-    
-       }
-    
-    /*public void contarFilas(){
         
-        try {
-            Statement s = conexion.createStatement();
-            ResultSet r = s.executeQuery("SELECT COUNT (*) AS rowcount FROM jugadores");
-            r.next();
-            int count = r.getInt("rowcount") ;
-            r.close() ;
-            System.out.println("MyTable has " + count + " row(s).");
-        } catch (SQLException ex) {
-            Logger.getLogger(conecta.class.getName()).log(Level.SEVERE, null, ex);
+       }else{
+            System.out.println("Cancelado por el usuario");
         }
-    }*/
-    
-          
+    }
     /**
      * Cierra la base con seguridad para evitar daños en nuestros datos de la tabla.
+     * Al estar cerrada no nos permitirá realizar nigún cambio.
      */
     public void cerrarBasePersonas(){
         
