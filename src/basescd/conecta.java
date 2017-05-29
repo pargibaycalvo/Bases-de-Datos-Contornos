@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Programa para añadir datos a una base de datos externa.
  * @author ped90
  */
 public class conecta {
@@ -28,7 +28,9 @@ public class conecta {
     
     private String url;
     
-
+    /**
+     * Ruta de acceso al archivo de base de datos.
+     */
     public conecta() {
         url="default.db";
     }
@@ -36,7 +38,9 @@ public class conecta {
     public conecta(String url) {
         this.url = url;
     }
-    
+    /**
+     * Conexion al fichero que es el que tiene la base de datos creada en la carpeta del proyecto.
+     */
     public void Conexion(){
         try{
             Class.forName("org.sqlite.JDBC");
@@ -53,7 +57,9 @@ public class conecta {
         JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    
+    /**
+     * Mensajes para añadir los datos necesarios.
+     */
     public void cargaArray(){
         
             personas.add(new parametros(
@@ -61,7 +67,9 @@ public class conecta {
             JOptionPane.showInputDialog("Inserta el DNI")));
             
     }
-    
+    /**
+     * Insertar los datos que le añadimos anteriormente a la nuestra tabla.
+     */
     public void insertarPersonas(){
         
         try {
@@ -76,7 +84,9 @@ public class conecta {
         }
         
     }
-    
+    /**
+     * Visualiza los datos de la tabla.
+     */
     public void visualizarPersonas(){
         
         try {
@@ -88,11 +98,15 @@ public class conecta {
                System.out.println();
            }
         } catch (SQLException ex) {
-            System.out.println("Error al leer  la Base de Datos: "+ex.getMessage());
+            System.out.println("Error al leer la Base de Datos: "+ex.getMessage());
         }
         
     }
-    
+    /**
+     * Borrar los datos de la tabla mediante el DNI.
+     * Al introducir el DNI se borra esa linea.
+     * @param reg 
+     */
     public void borrarPersonas(Integer reg){
         
         try{ 
@@ -104,7 +118,12 @@ public class conecta {
         }
         
     }
-    
+    /**
+     * Actualiza los datos de la fila que queramos mediante el DNI.
+     * @param reg
+     * @param nom
+     * @param dni 
+     */
     public void actualizarPersonas(Integer reg, String nom, String dni){ 
        try{ 
             PreparedStatement actualiza = conexion.prepareStatement("update jugadores set nombre='"+nom+"',dni='"+dni+"'where dni="+reg.toString());
@@ -115,7 +134,9 @@ public class conecta {
         }
        
     }
-    
+    /**
+     * Cierra la base con seguridad para evitar daños en nuestros datos de la tabla.
+     */
     public void cerrarBasePersonas(){
         
         try {

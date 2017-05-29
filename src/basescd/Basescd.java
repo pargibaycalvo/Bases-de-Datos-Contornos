@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 public class Basescd {
 
     /**
+     * Menú para usar la base de datos cómodamente.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
