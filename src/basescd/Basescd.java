@@ -25,7 +25,8 @@ public class Basescd {
         obc.insertarPersonas();
         obc.visualizarPersonas();
         obc.borrarPersonas(Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para borrar la fila correspondiente:")));
-        obc.actualizarPersonas();
+        obc.actualizarPersonas(Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para actualizar la fila correspondiente:")),
+               JOptionPane.showInputDialog("Inserte el nombre a actualizar:"), JOptionPane.showInputDialog("Inserte el DNI a actualizar:"));
         obc.cerrarBasePersonas();
     }
     

@@ -106,10 +106,7 @@ public class conecta {
         
     }
     
-    public void actualizarPersonas(){ 
-        Integer reg=Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para actualizar la fila correspondiente:")); 
-        String nom=JOptionPane.showInputDialog("Inserte el nombre a actualizar:"); 
-        String dni=JOptionPane.showInputDialog("Inserte el DNI a actualizar:"); 
+    public void actualizarPersonas(Integer reg, String nom, String dni){ 
        try{ 
             PreparedStatement actualiza = conexion.prepareStatement("update jugadores set nombre='"+nom+"',dni='"+dni+"'where dni="+reg.toString());
                 actualiza.execute();
