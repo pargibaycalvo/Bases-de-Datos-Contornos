@@ -76,7 +76,8 @@ public class conecta {
             insert.setString(1,personas.get(i).getNombre());
             insert.setString(2,personas.get(i).getDni());
             insert.execute();
-                System.out.println("Fila insertada");
+            int count=insert.getUpdateCount();
+                System.out.println(count+" fila insertada");
             }
         } catch (SQLException ex) {
             System.out.println("Error al insertar los datos en la tabla:"+ex.getMessage());
@@ -91,11 +92,13 @@ public class conecta {
         try {
            PreparedStatement ver = conexion.prepareStatement("Select * from Jugadores");
            result = ver.executeQuery();
+           int count=ver.getMaxRows();
            while(result.next()){
                System.out.println("Nombre  "+":"+ result.getString("Nombre"));
                System.out.println("DNI"+" :"+result.getString("DNI"));
-               System.out.println();
            }
+               
+               System.out.println("Total de filas ="+count);
         } catch (SQLException ex) {
             System.out.println("Error al leer la Base de Datos: "+ex.getMessage());
         }
@@ -110,8 +113,9 @@ public class conecta {
         
         try{ 
             PreparedStatement borra = conexion.prepareStatement("delete from Jugadores where dni="+reg.toString());
-            borra.execute();
-            System.out.println("Fila borrada con éxito"); 
+            borra.executeUpdate();
+            int count=borra.getUpdateCount();
+            System.out.println(count+" fila borrada con éxito"); 
         }catch(SQLException ex){ 
             System.out.println("Error al borrar la fila, compruebe que ha introducido bien el DNI: "+ex.getMessage()); 
         }
@@ -128,7 +132,8 @@ public class conecta {
        try{ 
             PreparedStatement actualiza = conexion.prepareStatement("update jugadores set nombre='"+nom+"',dni='"+dni+"'where dni="+reg.toString());
                 actualiza.execute();
-                System.out.println("Registro actualizado"); 
+                int count=actualiza.executeUpdate();
+                System.out.println("Registro actualizado ="+count); 
         }catch(SQLException ex){ 
             System.out.println("Error al actualizar el registro, verifique que ha introducido bien los datos a actualizar: "+ex.getMessage());
         }
