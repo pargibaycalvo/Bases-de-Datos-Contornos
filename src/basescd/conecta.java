@@ -91,5 +91,18 @@ public class conecta {
         }
         
     }
+    
+    public void borrarPersonas(){
+        
+        Integer reg=Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para borrar la fila correspondiente:")); 
+        try{ 
+            Statement st = conexion.createStatement(); 
+            st.execute("delete from Jugadores where dni="+reg.toString()); 
+            System.out.println("Fila borrada con éxito"); 
+        }catch(SQLException ex){ 
+            System.out.println("Error al borrar la fila, compruebe que ha introducido bien el DNI: "+ex.getMessage()); 
+        }
+        
+    }
      
 }

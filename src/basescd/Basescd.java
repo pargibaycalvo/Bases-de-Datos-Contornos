@@ -22,6 +22,7 @@ public class Basescd {
         obc.cargaArray();
         obc.insertarPersonas();
         obc.visualizarPersonas();
+        obc.borrarPersonas();
     }
     
 }
