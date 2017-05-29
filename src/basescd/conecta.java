@@ -92,13 +92,10 @@ public class conecta {
         try {
            PreparedStatement ver = conexion.prepareStatement("Select * from Jugadores");
            result = ver.executeQuery();
-           int count=ver.getMaxRows();
            while(result.next()){
                System.out.println("Nombre  "+":"+ result.getString("Nombre"));
-               System.out.println("DNI"+" :"+result.getString("DNI"));
+               System.out.println("DNI"+" :"+result.getString("DNI"));   
            }
-               
-               System.out.println("Total de filas ="+count);
         } catch (SQLException ex) {
             System.out.println("Error al leer la Base de Datos: "+ex.getMessage());
         }
