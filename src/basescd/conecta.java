@@ -94,7 +94,7 @@ public class conecta {
            result = ver.executeQuery();
            while(result.next()){
                System.out.println("Nombre  "+":"+ result.getString("Nombre"));
-               System.out.println("dni"+" :"+result.getString("DNI"));
+               System.out.println("DNI"+" :"+result.getString("DNI"));
                System.out.println();
            }
         } catch (SQLException ex) {
@@ -125,6 +125,7 @@ public class conecta {
      * @param dni 
      */
     public void actualizarPersonas(Integer reg, String nom, String dni){ 
+        
        try{ 
             PreparedStatement actualiza = conexion.prepareStatement("update jugadores set nombre='"+nom+"',dni='"+dni+"'where dni="+reg.toString());
                 actualiza.execute();
