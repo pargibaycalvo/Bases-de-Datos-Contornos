@@ -25,7 +25,7 @@ public class Basescd {
         int opcion;
          do{
          opcion= Integer.parseInt(JOptionPane.showInputDialog("1) Conexión de la Base de Datos. \n2) Insertar Jugador nuevo. \n3) Visualizar Jugadores."
-                                                                                                 + " \n4) Borrar Jugador.  \n5) Actualizar Jugador.  \n6) Cerrar Base de datos. \n0) Salir del programa."));
+                                                                                                 + " \n4) Borrar Jugador.  \n5) Actualizar Jugador.  \n6) Formatear Tabla. \n7) Cerrar Base de datos. \n0) Salir del programa."));
          switch(opcion){
             case 1:
                 obc.Conexion();
@@ -46,6 +46,9 @@ public class Basescd {
                JOptionPane.showInputDialog("Inserte el DNI a actualizar:"));
                 break;
             case 6:
+                obc.formatearTabla();
+                break;
+            case 7:
                 obc.cerrarBasePersonas();
                 break;
             case 0:

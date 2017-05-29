@@ -20,7 +20,6 @@ import javax.swing.JOptionPane;
  * @author ped90
  */
 public class conecta {
-
     public static Connection conexion;
     ResultSet result;
    
@@ -65,7 +64,6 @@ public class conecta {
             personas.add(new parametros(
             JOptionPane.showInputDialog("Inserta el Nombre"),
             JOptionPane.showInputDialog("Inserta el DNI")));
-            
     }
     /**
      * Insertar los datos que le añadimos anteriormente a la nuestra tabla.
@@ -78,6 +76,7 @@ public class conecta {
             insert.setString(1,personas.get(i).getNombre());
             insert.setString(2,personas.get(i).getDni());
             insert.execute();
+                System.out.println("Fila insertada");
             }
         } catch (SQLException ex) {
             System.out.println("Error al insertar los datos en la tabla:"+ex.getMessage());
@@ -135,6 +134,21 @@ public class conecta {
         }
        
     }
+    /**
+     * Elimina todas las filas de la tabla, dejando así la tabla en blanco.
+     */
+    public void formatearTabla(){
+    
+        try {
+        PreparedStatement borracom = conexion.prepareStatement("delete from jugadores");
+        borracom.execute();
+        System.out.println("Tabla formateada");
+
+        } catch(SQLException ex){ 
+            System.out.println("Error al formatear la tabla: "+ex.getMessage());
+        }
+    
+       }
     /**
      * Cierra la base con seguridad para evitar daños en nuestros datos de la tabla.
      */
