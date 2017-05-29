@@ -20,14 +20,41 @@ public class Basescd {
         // TODO code application logic here
         
         conecta obc = new conecta();
-        obc.Conexion();
-        obc.cargaArray();
-        obc.insertarPersonas();
-        obc.visualizarPersonas();
-        obc.borrarPersonas(Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para borrar la fila correspondiente:")));
-        obc.actualizarPersonas(Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para actualizar la fila correspondiente:")),
+        
+        int opcion;
+         do{
+         opcion= Integer.parseInt(JOptionPane.showInputDialog("1) Conexión de la Base de Datos. \n2) Insertar Jugador nuevo. \n3) Visualizar Jugadores."
+                                                                                                 + " \n4) Borrar Jugador.  \n5) Actualizar Jugador.  \n6) Cerrar Base de datos. \n0) Salir del programa."));
+         switch(opcion){
+            case 1:
+                obc.Conexion();
+                break;
+            case 2:
+               obc.cargaArray();
+               obc.insertarPersonas();
+                break;
+            case 3:
+                obc.visualizarPersonas();
+                break;
+            case 4:
+                obc.borrarPersonas(Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para borrar la fila correspondiente:")));
+                break;
+            case 5:
+                obc.actualizarPersonas(Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para actualizar la fila correspondiente:")),
                JOptionPane.showInputDialog("Inserte el nombre a actualizar:"), JOptionPane.showInputDialog("Inserte el DNI a actualizar:"));
-        obc.cerrarBasePersonas();
+                break;
+            case 6:
+                obc.cerrarBasePersonas();
+                break;
+            case 0:
+                JOptionPane.showMessageDialog(null,"Pulse para salir del programa");
+                System.exit(0); 
+                break;
+            default:
+                JOptionPane.showMessageDialog(null,"Error");
+        }
+    }while(opcion!=0);
     }
+        
     
 }
