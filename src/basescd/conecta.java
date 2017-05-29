@@ -35,10 +35,10 @@ public class conecta {
         }  
         try {
          Connection conexion = DriverManager.getConnection("jdbc:sqlite:"+url);
-         System.out.println("Esto funciona madafakers");
+         System.out.println("Conectado");
         }
         catch (SQLException e) {
-         System.out.println("Buuuu");
+         System.out.println("Error");
         JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
