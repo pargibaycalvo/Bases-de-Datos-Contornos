@@ -94,9 +94,8 @@ public class conecta {
         
     }
     
-    public void borrarPersonas(){
+    public void borrarPersonas(Integer reg){
         
-        Integer reg=Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para borrar la fila correspondiente:")); 
         try{ 
             Statement st = conexion.createStatement(); 
             st.execute("delete from Jugadores where dni="+reg.toString()); 

@@ -5,6 +5,8 @@
  */
 package basescd;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ped90
@@ -22,7 +24,7 @@ public class Basescd {
         obc.cargaArray();
         obc.insertarPersonas();
         obc.visualizarPersonas();
-        obc.borrarPersonas();
+        obc.borrarPersonas(Integer.parseInt(JOptionPane.showInputDialog("Inserte el número del DNI para borrar la fila correspondiente:")));
         obc.actualizarPersonas();
         obc.cerrarBasePersonas();
     }
