@@ -70,16 +70,15 @@ public class conecta {
      * Insertar los datos que le añadimos anteriormente a la nuestra tabla.
      */
     public void insertarPersonas(){
-        
+
         try {
             PreparedStatement insert = conexion.prepareStatement("Insert into Jugadores(Nombre, DNI) values(?,?)");
-            for(int i=0;i<personas.size();i++){
-            insert.setString(1,personas.get(i).getNombre());
-            insert.setString(2,personas.get(i).getDni());
+            insert.setString(1,personas.get(personas.size()-1).getNombre());
+            insert.setString(2,personas.get(personas.size()-1).getDni());
             insert.execute();
             int count=insert.getUpdateCount();
                 System.out.println(count+" fila insertada");
-            }
+            
         } catch (SQLException ex) {
             System.out.println("Error al insertar los datos en la tabla:"+ex.getMessage());
         }
